@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div id="container">
+
+    <div class="col-md-6 col-md-offset-3">
+      <form method="post" action="{{ path ('messagerie_new') }}">
+        <input type="text" name="destinataire">
+        <textarea name="message" ></textarea>
+        <input type="submit">
+      </form>
+    </div>
+
+    <div class="col-md-12" style="margin-top:50px;">
+
+      {% set compteur = 1 %}
+
+      {% for msg in tab|reverse %}
+
+        <hr>
+        <p>{{ msg['auteur']|upper }}</p>
+        <p>{{ msg['message']|lower }}</p>
+        <p>{{ compteur }}</p>
+
+        {% set compteur = compteur + 1 %}
+
+      {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
